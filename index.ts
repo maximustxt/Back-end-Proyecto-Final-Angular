@@ -1,5 +1,5 @@
-import server from "./serve";
-import { connectDB } from "./DataBase";
+import server from "./src/serve";
+import { connectDB } from "./src/DataBase";
 
 connectDB();
 
