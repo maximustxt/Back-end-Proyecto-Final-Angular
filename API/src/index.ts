@@ -1,4 +1,4 @@
-import server from "./src/serve";
+import server from "./serve";
 import { connectDB } from "./DataBase";
 
 connectDB();
