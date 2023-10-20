@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-import Alumo from "../../models/Alumno";
+import Alumno from "../../models/Alumno";
 
 const deleteAlumnosController = async (id: string) => {
   try {
     const alumnoId = new mongoose.Types.ObjectId(id); // Convierte la cadena en ObjectId
 
-    const alumnoEncontrar = await Alumo.findOneAndDelete(alumnoId).exec(); // exec transforma a una promesa.
+    const alumnoEncontrar = await Alumno.findOneAndDelete(alumnoId).exec(); // exec transforma a una promesa.
     if (alumnoEncontrar) {
-      const Alumnos = await Alumo.find();
+      const Alumnos = await Alumno.find();
       return Alumnos;
     } else {
       throw new Error("Alumno no existente!");

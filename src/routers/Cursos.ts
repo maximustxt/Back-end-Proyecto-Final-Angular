@@ -5,6 +5,7 @@ import getCursosControlle from "../controllers/Cursos/getCursosControlle";
 import putCursosControlle from "../controllers/Cursos/putCursosControlle";
 import postCursosControlle from "../controllers/Cursos/postCursosControlle";
 import deleteCursosControlle from "../controllers/Cursos/deleteCursosControlle";
+import getCursosParaAlumnosController from "../controllers/Cursos/getCursosParaAlumnosController";
 
 const RutaCurso = Router();
 
@@ -15,7 +16,17 @@ RutaCurso.get("/", async (req, res) => {
     const response = await getCursosControlle();
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
+    res.status(500).json(error.message);
+  }
+});
+
+/!*------------------------------ OBTENER NOMBRES CURSOS ---------------------------------*/;
+
+RutaCurso.get("/Nombres", async (req, res) => {
+  try {
+    const response = await getCursosParaAlumnosController();
+    res.status(200).json(response);
+  } catch (error: any) {
     res.status(500).json(error.message);
   }
 });

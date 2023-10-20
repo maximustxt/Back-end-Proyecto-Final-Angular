@@ -11,6 +11,7 @@ const Cursos = new Schema(
       required: true,
     },
     vacantes: { type: Number },
+    alumnos: [{ type: Schema.Types.ObjectId, ref: "Alumo" }], // todo los Alumnos del curso.
   },
   { timestamps: false }
 );

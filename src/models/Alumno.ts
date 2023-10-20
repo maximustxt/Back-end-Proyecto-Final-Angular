@@ -7,14 +7,14 @@ const Alumnos = new Schema(
     imagen: { type: String, required: true },
     cursando: {
       type: String,
-      enum: ["Esta Cursando", "Abandono", "Finalizo"],
       required: true,
     },
     edad: { type: Number },
+    cursos: [{ type: Schema.Types.ObjectId, ref: "Curso" }],
   },
   { timestamps: false }
 );
 
-const Alumo = model("Alumno", Alumnos);
+const Alumno = model("Alumno", Alumnos);
 
-export default Alumo;
+export default Alumno;
