@@ -3,7 +3,7 @@ import { model, Schema } from "mongoose";
 const Cursos = new Schema(
   {
     nombre: { type: String, required: true },
-    descripcion: { type: String },
+    descripcion: { type: String, required: true },
     profesor: { type: String, required: true },
     area: {
       type: String,
