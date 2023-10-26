@@ -10,6 +10,17 @@ import getDetailCursoControlle from "../controllers/Cursos/getDetailCursoControl
 
 const RutaCurso = Router();
 
+/!*------------------------------ OBTENER NOMBRES CURSOS ---------------------------------*/;
+
+RutaCurso.get("/Nombres", async (req, res) => {
+  try {
+    const response = await getCursosParaAlumnosController();
+    res.status(200).json(response);
+  } catch (error: any) {
+    res.status(500).json(error.message);
+  }
+});
+
 /!*------------------------------ OBTENER CURSOS ---------------------------------*/;
 
 RutaCurso.get("/", async (req, res) => {
@@ -27,17 +38,6 @@ RutaCurso.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const response = await getDetailCursoControlle(id);
-    res.status(200).json(response);
-  } catch (error: any) {
-    res.status(500).json(error.message);
-  }
-});
-
-/!*------------------------------ OBTENER NOMBRES CURSOS ---------------------------------*/;
-
-RutaCurso.get("/Nombres", async (req, res) => {
-  try {
-    const response = await getCursosParaAlumnosController();
     res.status(200).json(response);
   } catch (error: any) {
     res.status(500).json(error.message);
