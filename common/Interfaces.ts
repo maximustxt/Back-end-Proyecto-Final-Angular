@@ -14,4 +14,14 @@ export interface ICursos {
   profesor: string;
   area: string;
   vacantes: number;
+  fechaInicio: string;
+  fechaFinal: string;
+}
+
+export interface IAdministrador {
+  _id?: string;
+  telefono?: string;
+  nombre: string;
+  email: string;
+  constraseña: string;
 }
