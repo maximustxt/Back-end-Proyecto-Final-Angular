@@ -25,3 +25,11 @@ export interface IAdministrador {
   email: string;
   constraseña: string;
 }
+
+export interface IAdmin {
+  _id?: string;
+  nombre: string;
+  edad: number;
+  imagen: string;
+  email: string;
+}

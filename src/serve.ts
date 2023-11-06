@@ -8,6 +8,7 @@ const serve = express();
 import RutaAlumno from "./routers/Alumnos";
 import RutaCurso from "./routers/Cursos";
 import RutaAdministrador from "./routers/Administrador";
+import RutaTablaAdministrador from "./routers/TablaAdministrador";
 
 //*- PROXYS :
 
@@ -17,5 +18,6 @@ serve.use(morgan("dev"));
 serve.use("/Alumnos", RutaAlumno);
 serve.use("/Cursos", RutaCurso);
 serve.use("/Administrador", RutaAdministrador);
+serve.use("/TablaAdministradores", RutaTablaAdministrador);
 
 export default serve;
