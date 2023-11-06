@@ -2,12 +2,26 @@ import { Router } from "express";
 
 //*- IMPORT DE CONTROLLERS :
 import getTablaAdministradoresController from "../controllers/TablaAdministrador/getTablaAdministradoresController";
-import getTablaDetailAdministradorController from "../controllers/TablaAdministrador/getTablaDetailAdministradorController";
+import getDetailTableAdministradorControllers from "../controllers/TablaAdministrador/getDetailTableAdministradorControllers";
 import postTablaAdministradorController from "../controllers/TablaAdministrador/postTablaAdministradorController";
 import deleteTablaAdministradorController from "../controllers/TablaAdministrador/deleteTablaAdministradorController";
 import VerificarTablaAdministradorController from "../controllers/TablaAdministrador/VerificarTablaAdministradorController";
 
 const RutaTablaAdministrador = Router();
+
+/!*------------------------------ VERIFICAR ADMINISTRADOR -------------------------------*/;
+
+RutaTablaAdministrador.post("/Verificacion", async (req, res) => {
+  try {
+    const Administrador = req.body;
+
+    const response = await VerificarTablaAdministradorController(Administrador);
+    res.status(200).json(response);
+  } catch (error: any) {
+    console.error(error.message);
+    res.status(500).json(error.message);
+  }
+});
 
 /!*------------------------------ OBTENER ADMINISTRADOR ---------------------------------*/;
 
@@ -27,7 +41,7 @@ RutaTablaAdministrador.get("/Detail/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const response = await getTablaDetailAdministradorController(id);
+    const response = await getDetailTableAdministradorControllers(id);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);
@@ -56,20 +70,6 @@ RutaTablaAdministrador.delete("/:id", async (req, res) => {
     const { id } = req.params;
 
     const response = await deleteTablaAdministradorController(id);
-    res.status(200).json(response);
-  } catch (error: any) {
-    console.error(error.message);
-    res.status(500).json(error.message);
-  }
-});
-
-/!*------------------------------ VERIFICAR ADMINISTRADOR -------------------------------*/;
-
-RutaTablaAdministrador.post("/Verificacion", async (req, res) => {
-  try {
-    const Administrador = req.body;
-
-    const response = await VerificarTablaAdministradorController(Administrador);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);
