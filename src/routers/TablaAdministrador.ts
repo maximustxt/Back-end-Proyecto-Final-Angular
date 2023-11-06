@@ -65,7 +65,7 @@ RutaTablaAdministrador.delete("/:id", async (req, res) => {
 
 /!*------------------------------ VERIFICAR ADMINISTRADOR -------------------------------*/;
 
-RutaTablaAdministrador.post("/", async (req, res) => {
+RutaTablaAdministrador.post("/Verificacion", async (req, res) => {
   try {
     const Administrador = req.body;
 
