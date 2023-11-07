@@ -12,7 +12,8 @@ const postTablaAdministradorController = async (Admin: IAdmin) => {
     } else {
       const newAdmin = new TablaAdmin(Admin);
       await newAdmin.save();
-      return "Administrador creado con exito!";
+      const Administradores = TablaAdmin.find();
+      return Administradores;
     }
   } catch (error: any) {
     throw new Error(error.message);
