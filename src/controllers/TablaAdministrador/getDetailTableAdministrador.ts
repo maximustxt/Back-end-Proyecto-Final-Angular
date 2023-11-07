@@ -1,7 +1,7 @@
 //* MODELO :
 import TablaAdmin from "../../models/TablaAdministrador";
 
-const getDetailTableAdministradorControllers = async (id: string) => {
+const getDetailTableAdministrador = async (id: string) => {
   try {
     const AdminEncontrado = await TablaAdmin.findById(id);
 
@@ -15,4 +15,4 @@ const getDetailTableAdministradorControllers = async (id: string) => {
   }
 };
 
-export default getDetailTableAdministradorControllers;
+export default getDetailTableAdministrador;

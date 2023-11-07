@@ -1,11 +1,11 @@
 import { Router } from "express";
 
 //*- IMPORT DE CONTROLLERS :
+import VerificarTablaAdministradorController from "../controllers/TablaAdministrador/VerificarTablaAdministradorController";
 import getTablaAdministradoresController from "../controllers/TablaAdministrador/getTablaAdministradoresController";
-import getDetailTableAdministradorControllers from "../controllers/TablaAdministrador/getDetailTableAdministradorControllers";
+import getDetailTableAdministrador from "../controllers/TablaAdministrador/getDetailTableAdministrador";
 import postTablaAdministradorController from "../controllers/TablaAdministrador/postTablaAdministradorController";
 import deleteTablaAdministradorController from "../controllers/TablaAdministrador/deleteTablaAdministradorController";
-import VerificarTablaAdministradorController from "../controllers/TablaAdministrador/VerificarTablaAdministradorController";
 
 const RutaTablaAdministrador = Router();
 
@@ -41,7 +41,7 @@ RutaTablaAdministrador.get("/Detail/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const response = await getDetailTableAdministradorControllers(id);
+    const response = await getDetailTableAdministrador(id);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);
