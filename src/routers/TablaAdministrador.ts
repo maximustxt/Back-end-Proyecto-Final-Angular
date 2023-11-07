@@ -6,6 +6,7 @@ import getTablaAdministradoresController from "../controllers/TablaAdministrador
 import getDetailTableAdministrador from "../controllers/TablaAdministrador/getDetailTableAdministrador";
 import postTablaAdministradorController from "../controllers/TablaAdministrador/postTablaAdministradorController";
 import deleteTablaAdministradorController from "../controllers/TablaAdministrador/deleteTablaAdministradorController";
+import putAdministradorTablaControlle from "../controllers/TablaAdministrador/putAdministradorTablaControlle";
 
 const RutaTablaAdministrador = Router();
 
@@ -56,6 +57,21 @@ RutaTablaAdministrador.post("/", async (req, res) => {
     const Administrador = req.body;
 
     const response = await postTablaAdministradorController(Administrador);
+    res.status(200).json(response);
+  } catch (error: any) {
+    console.error(error.message);
+    res.status(500).json(error.message);
+  }
+});
+
+/!*------------------------------ ACTUALIZAR ADMINISTRADOR -------------------------------*/;
+
+RutaTablaAdministrador.put("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const Admin = req.body;
+
+    const response = await putAdministradorTablaControlle(_id, Admin);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);
