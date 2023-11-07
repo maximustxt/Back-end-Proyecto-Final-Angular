@@ -29,6 +29,7 @@ export interface IAdministrador {
 export interface IAdmin {
   _id?: string;
   nombre: string;
+  apellido: string;
   edad: number;
   imagen: string;
   email: string;
