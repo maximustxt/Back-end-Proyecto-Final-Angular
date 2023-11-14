@@ -6,6 +6,7 @@ import putAlumnosControlle from "../controllers/Alumnos/putAlumnosController";
 import postAlumnosControlle from "../controllers/Alumnos/postAlumnosController";
 import deleteAlumnosControlle from "../controllers/Alumnos/deleteAlumnosController";
 import getDetailAlumnoControlle from "../controllers/Alumnos/getDetailAlumnoControlle";
+import getLoginAlumnoController from "../controllers/Alumnos/getLoginAlumnoController";
 
 const RutaAlumnos = Router();
 
@@ -28,6 +29,20 @@ RutaAlumnos.get("/:id", async (req, res) => {
     const { id } = req.params;
 
     const response = await getDetailAlumnoControlle(id);
+    res.status(200).json(response);
+  } catch (error: any) {
+    console.error(error.message);
+    res.status(500).json(error.message);
+  }
+});
+
+/!*------------------------------ LOGIN ALUMNO ---------------------------------*/;
+
+RutaAlumnos.get("/Login/:nombre", async (req, res) => {
+  try {
+    const { nombre } = req.params;
+
+    const response = await getLoginAlumnoController(nombre);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);

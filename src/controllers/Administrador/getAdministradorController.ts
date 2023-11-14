@@ -6,7 +6,6 @@ const getAdministradorController = async (nombre: string) => {
     const AdminEncontrado = await Administrador.findOne({ nombre });
 
     if (AdminEncontrado) {
-      console.log("Admin encontrado");
       return AdminEncontrado;
     } else {
       throw new Error("Administrador no encontrado!");
