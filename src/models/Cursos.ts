@@ -13,7 +13,7 @@ const Cursos = new Schema(
     vacantes: { type: Number },
     fechaInicio: { type: String, required: true },
     fechaFinal: { type: String, required: true },
-    alumnos: [{ type: Schema.Types.ObjectId, ref: "Alumo" }], // todo los Alumnos del curso.
+    alumnos: [{ type: Schema.Types.ObjectId, ref: "Alumo" }],
   },
   { timestamps: false }
 );

@@ -9,6 +9,7 @@ import RutaAlumno from "./routers/Alumnos";
 import RutaCurso from "./routers/Cursos";
 import RutaAdministrador from "./routers/Administrador";
 import RutaTablaAdministrador from "./routers/TablaAdministrador";
+import CursosDeLosAlumnos from "./routers/CursosDeLosAlumnos";
 
 //*- PROXYS :
 
@@ -19,5 +20,6 @@ serve.use("/Alumnos", RutaAlumno);
 serve.use("/Cursos", RutaCurso);
 serve.use("/Administrador", RutaAdministrador);
 serve.use("/TablaAdministradores", RutaTablaAdministrador);
+serve.use("/CursosDeLosAlumnos", CursosDeLosAlumnos);
 
 export default serve;
