@@ -4,7 +4,7 @@ import Alumno from "../../models/Alumno";
 
 const postCursosDelAlumnoController = async (
   idAlumno: string,
-  idCurso: string
+  idsCursos: string[]
 ) => {
   try {
     // Buscar alumno :
@@ -12,13 +12,15 @@ const postCursosDelAlumnoController = async (
 
     if (!alumno) throw new Error("Alumno no encontrado!");
 
-    // Agregar a los cursos del Alumno el nuevo curso :
-    const objectIdCurso = new mongoose.Types.ObjectId(idCurso);
-    alumno.cursos.push(objectIdCurso);
+    idsCursos.map(async (curso) => {
+      // Agregar a los cursos del Alumno el nuevo curso :
+      const objectIdCurso = new mongoose.Types.ObjectId(curso);
+      alumno.cursos.push(objectIdCurso);
 
-    // Guardamos los cambios :
-    await alumno.save();
-    return "Curso agregado con exito! =) ";
+      // Guardamos los cambios :
+      await alumno.save();
+    });
+    return "Curso/s agregado/s con exito! =) ";
   } catch (error: any) {
     throw new Error(error.message);
   }

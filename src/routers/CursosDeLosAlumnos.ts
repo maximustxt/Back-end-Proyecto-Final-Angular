@@ -20,11 +20,11 @@ CursosDeLosAlumnos.get("/:idAlumno", async (req, res) => {
 
 /!*------------------------------ GUARDAR NUEVO CURSO DEL ALUMNO -------------------------------*/;
 
-CursosDeLosAlumnos.post("/Verificacion", async (req, res) => {
+CursosDeLosAlumnos.post("/", async (req, res) => {
   try {
-    const { idAlumno, idCurso } = req.body;
+    const { idAlumno, idsCursos } = req.body;
 
-    const response = await postCursosDelAlumnoController(idAlumno, idCurso);
+    const response = await postCursosDelAlumnoController(idAlumno, idsCursos);
     res.status(200).json(response);
   } catch (error: any) {
     console.error(error.message);
