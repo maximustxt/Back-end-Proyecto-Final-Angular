@@ -3,25 +3,25 @@ import Alumno from "../../models/Alumno";
 
 const deleteCursosDelAlumnoController = async (
   idAlumno: string,
-  idCurso: string
+  idsCursos: string[]
 ) => {
   try {
     // Convertimos los ids en tipo ObjectID de mongoose.
     const alumnoObjectId = new mongoose.Types.ObjectId(idAlumno);
-    const cursoObjectId = new mongoose.Types.ObjectId(idCurso);
-
-    // Eliminamos el carrito de la base de datos.
-    // await Carrito.findByIdAndRemove(carritoObjectId);
+    const cursosObjectId = idsCursos.map(
+      (cursoId) => new mongoose.Types.ObjectId(cursoId)
+    );
 
     // Buscamos el Alumno.
-    const alumnno = await Alumno.findById(alumnoObjectId);
+    const alumno = await Alumno.findById(alumnoObjectId);
 
-    if (alumnno) {
-      // Filtramos el carrito del Alumno y eliminamos el carrito deseado.
-      alumnno.cursos = alumnno.cursos.filter(
-        (cursoId) => cursoId.toString() !== cursoObjectId.toString()
+    if (alumno) {
+      // Filtramos el array de cursos del Alumno y eliminamos los cursos deseados.
+      alumno.cursos = alumno.cursos.filter(
+        (cursoId) => !cursosObjectId.includes(cursoId)
       );
-      await alumnno.save();
+
+      await alumno.save();
     } else {
       throw new Error("Alumno no existente");
     }
