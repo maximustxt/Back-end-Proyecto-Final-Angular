@@ -15,10 +15,15 @@ const postCursosDelAlumnoController = async (
     idsCursos.map(async (curso) => {
       // Agregar a los cursos del Alumno el nuevo curso :
       const objectIdCurso = new mongoose.Types.ObjectId(curso);
-      alumno.cursos.push(objectIdCurso);
 
-      // Guardamos los cambios :
-      await alumno.save();
+      if (!alumno.cursos.includes(objectIdCurso)) {
+        // Si el curso no existe, agregarlo a la lista
+        alumno.cursos.push(objectIdCurso);
+        // Guardamos los cambios :
+        await alumno.save();
+      } else {
+        throw new Error("Curso ya existente");
+      }
     });
     return "Curso/s agregado/s con exito! =) ";
   } catch (error: any) {
