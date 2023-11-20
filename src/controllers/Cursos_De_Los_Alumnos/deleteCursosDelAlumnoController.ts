@@ -3,13 +3,15 @@ import Alumno from "../../models/Alumno";
 
 const deleteCursosDelAlumnoController = async (
   idAlumno: string,
-  idsCursos: string[]
+  idCurso: any
 ) => {
   try {
+    const { idsCursos } = idCurso;
+
     // Convertimos los ids en tipo ObjectID de mongoose.
     const alumnoObjectId = new mongoose.Types.ObjectId(idAlumno);
     const cursosObjectId = idsCursos.map(
-      (cursoId) => new mongoose.Types.ObjectId(cursoId)
+      (cursoId: string) => new mongoose.Types.ObjectId(cursoId)
     );
 
     // Buscamos el Alumno.

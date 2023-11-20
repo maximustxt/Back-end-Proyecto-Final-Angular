@@ -36,9 +36,14 @@ CursosDeLosAlumnos.post("/", async (req, res) => {
 
 /!*------------------------------ ELIMINAR CURSOS DEL ALUMNO ---------------------------------*/;
 
-CursosDeLosAlumnos.delete("/:idAlumno/:idCurso", async (req, res) => {
+CursosDeLosAlumnos.delete("/:idAlumno/", async (req, res) => {
   try {
-    const { idAlumno, idCurso } = req.params;
+    const { idAlumno } = req.params;
+
+    const idCurso: any = req.query;
+
+    const { idsCursos } = idCurso;
+
     const response = await deleteCursosDelAlumnoController(idAlumno, idCurso);
     res.status(200).json(response);
   } catch (error: any) {
