@@ -17,7 +17,6 @@ RutaAdministrador.get("/:name", async (req, res) => {
     const response = await getAdministradorController(name);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -31,7 +30,6 @@ RutaAdministrador.get("/Detail/:id", async (req, res) => {
     const response = await getDetailAdministradorController(id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -45,7 +43,6 @@ RutaAdministrador.post("/", async (req, res) => {
     const response = await postAdministradorController(Administrador);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -59,7 +56,6 @@ RutaAdministrador.delete("/:id", async (req, res) => {
     const response = await deleteAdministradorController(id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });

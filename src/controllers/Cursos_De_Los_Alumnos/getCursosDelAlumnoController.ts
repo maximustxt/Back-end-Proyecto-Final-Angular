@@ -7,12 +7,11 @@ const getCursosDelAlumnoController = async (idAlumno: string) => {
 
     if (!alumno) {
       throw new Error("Alumno no encontrado!");
-    } else {
-      // Nos traemos todos los cursos del alumno :
-      const cursosDelAlumno = alumno.cursos;
-
-      return cursosDelAlumno;
     }
+    // Nos traemos todos los cursos del alumno :
+    const cursosDelAlumno = alumno.cursos;
+
+    return cursosDelAlumno;
   } catch (error: any) {
     throw new Error(error.message);
   }

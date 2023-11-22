@@ -17,7 +17,6 @@ RutaAlumnos.get("/", async (req, res) => {
     const response = await getAlumnosControlle();
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -31,7 +30,6 @@ RutaAlumnos.get("/:id", async (req, res) => {
     const response = await getDetailAlumnoControlle(id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -45,7 +43,6 @@ RutaAlumnos.get("/Login/:nombre", async (req, res) => {
     const response = await getLoginAlumnoController(nombre);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -60,7 +57,6 @@ RutaAlumnos.put("/:_id", async (req, res) => {
     const response = await putAlumnosControlle(_id, alumno);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -74,7 +70,6 @@ RutaAlumnos.post("/", async (req, res) => {
     const response = await postAlumnosControlle(alumno);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -88,7 +83,6 @@ RutaAlumnos.delete("/:_id", async (req, res) => {
     const response = await deleteAlumnosControlle(_id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });

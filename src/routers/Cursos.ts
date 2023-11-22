@@ -54,7 +54,6 @@ RutaCurso.put("/:_id", async (req, res) => {
     const response = await putCursosControlle(_id, curso);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -68,7 +67,6 @@ RutaCurso.post("/", async (req, res) => {
     const response = await postCursosControlle(curso);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -82,7 +80,6 @@ RutaCurso.delete("/:_id", async (req, res) => {
     const response = await deleteCursosControlle(_id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });

@@ -19,7 +19,6 @@ RutaTablaAdministrador.post("/Verificacion", async (req, res) => {
     const response = await VerificarTablaAdministradorController(Administrador);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -31,7 +30,6 @@ RutaTablaAdministrador.get("/", async (req, res) => {
     const response = await getTablaAdministradoresController();
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -45,7 +43,6 @@ RutaTablaAdministrador.get("/Detail/:id", async (req, res) => {
     const response = await getDetailTableAdministrador(id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -59,7 +56,6 @@ RutaTablaAdministrador.post("/", async (req, res) => {
     const response = await postTablaAdministradorController(Administrador);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -74,7 +70,6 @@ RutaTablaAdministrador.put("/:_id", async (req, res) => {
     const response = await putAdministradorTablaControlle(_id, Admin);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -88,7 +83,6 @@ RutaTablaAdministrador.delete("/:id", async (req, res) => {
     const response = await deleteTablaAdministradorController(id);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });

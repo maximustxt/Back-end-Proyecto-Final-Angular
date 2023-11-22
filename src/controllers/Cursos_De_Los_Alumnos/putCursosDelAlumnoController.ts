@@ -23,12 +23,15 @@ const putCursosDelAlumnoController = async (
       throw new Error("Alumno no existente");
     }
 
-    // Actualizamos la inscripción del Alumno después de actualizar los cursos.
-    const alumnoActualizado = await Alumno.findById(idAlumno).populate(
-      "cursos"
+    // Retornamos todos los alumnos actualizados.
+    const todosLosAlumnos = await Alumno.find();
+
+    // Filtramos los alumnos que tienen cursos.
+    const ArrayDeInscripciones = todosLosAlumnos.filter(
+      (a) => a.cursos.length > 0
     );
 
-    return alumnoActualizado?.cursos;
+    return ArrayDeInscripciones;
   } catch (error: any) {
     throw new Error(error);
   }

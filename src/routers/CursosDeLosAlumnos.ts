@@ -15,7 +15,20 @@ CursosDeLosAlumnos.get("/:idAlumno", async (req, res) => {
     const response = await getCursosDelAlumnoController(idAlumno);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
+    res.status(500).json(error.message);
+  }
+});
+
+/!*------------------------------ EDITAR LOS CURSOS DEL ALUMNO -------------------------------*/;
+
+CursosDeLosAlumnos.put("/:idAlumno", async (req, res) => {
+  try {
+    const { idAlumno } = req.params;
+    const { value } = req.body;
+
+    const response = await putCursosDelAlumnoController(idAlumno, value);
+    res.status(200).json(response);
+  } catch (error: any) {
     res.status(500).json(error.message);
   }
 });
@@ -29,7 +42,6 @@ CursosDeLosAlumnos.post("/", async (req, res) => {
     const response = await postCursosDelAlumnoController(idAlumno, idsCursos);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
@@ -42,26 +54,9 @@ CursosDeLosAlumnos.delete("/:idAlumno/", async (req, res) => {
 
     const idCurso: any = req.query;
 
-    const { idsCursos } = idCurso;
-
     const response = await deleteCursosDelAlumnoController(idAlumno, idCurso);
     res.status(200).json(response);
   } catch (error: any) {
-    console.error(error.message);
-    res.status(500).json(error.message);
-  }
-});
-
-/!*------------------------------ EDITAR LOS CURSOS DEL ALUMNO -------------------------------*/;
-
-CursosDeLosAlumnos.put("/", async (req, res) => {
-  try {
-    const { idAlumno, idsCursos } = req.body;
-
-    const response = await putCursosDelAlumnoController(idAlumno, idsCursos);
-    res.status(200).json(response);
-  } catch (error: any) {
-    console.error(error.message);
     res.status(500).json(error.message);
   }
 });
